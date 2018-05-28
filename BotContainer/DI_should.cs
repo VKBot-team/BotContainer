@@ -12,8 +12,8 @@ namespace BotContainer
         [Test]
         public void TestGetVkService()
         { 
-            var instance1 = DI.Container.Get<VkService>();
-            var instance2 = DI.Container.Get<VkService>();
+            var instance1 = DI.Get<VkService>();
+            var instance2 = DI.Get<VkService>();
 
             Assert.AreNotEqual(null, instance1);
             Assert.AreEqual(typeof(VkService), instance1.GetType());

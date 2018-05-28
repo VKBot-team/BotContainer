@@ -1,4 +1,5 @@
-﻿using API;
+﻿using System.ComponentModel.Design;
+using API;
 using Ninject;
 using VKApiCore;
 using GIFService;
@@ -7,15 +8,20 @@ namespace BotContainer
 {
     public class DI
     {
-        public IKernel Container { get; }
+        private readonly IKernel _container;
 
         public DI()
         {
-            Container = new StandardKernel();
+            _container = new StandardKernel();
 
-            Container.Bind<VkService>().ToSelf().InSingletonScope();
-            Container.Bind<GifService>().ToSelf().InSingletonScope();
-            Container.Bind<BotAPI>().ToSelf().InSingletonScope();
+            _container.Bind<VkService>().ToSelf().InSingletonScope();
+            _container.Bind<GifService>().ToSelf().InSingletonScope();
+            _container.Bind<BotAPI>().ToSelf().InSingletonScope();
+        }
+
+        public TService Get<TService>()
+        {
+            return _container.Get<TService>();
         }
     }
 }
