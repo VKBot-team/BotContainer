@@ -10,12 +10,17 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0-preview-20180510-03" />
     <PackageReference Include="Ninject" Version="3.3.4" />
-    <PackageReference Include="ninject.extensions.conventions" Version="3.3.0" />
     <PackageReference Include="NUnit" Version="3.10.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="API">
+      <HintPath>bin\Debug\API.dll</HintPath>
+    </Reference>
+    <Reference Include="GIFService">
+      <HintPath>bin\Debug\GIFService.dll</HintPath>
+    </Reference>
     <Reference Include="VKApiCore">
       <HintPath>bin\Debug\VKApiCore.dll</HintPath>
     </Reference>

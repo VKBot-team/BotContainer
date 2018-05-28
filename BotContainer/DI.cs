@@ -1,24 +1,21 @@
-﻿using System;
+﻿using API;
 using Ninject;
-using Ninject.Extensions.Conventions;
 using VKApiCore;
+using GIFService;
 
 namespace BotContainer
 {
     public class DI
     {
-        public static IKernel container { get; }
+        public IKernel Container { get; }
 
-        static DI()
+        public DI()
         {
-            container = new StandardKernel();
+            Container = new StandardKernel();
 
-            container.Bind(syntax => syntax
-                .FromThisAssembly()
-                .SelectAllClasses()
-                .BindAllInterfaces()
-                .Configure(onSyntax => onSyntax.InSingletonScope())
-            );
+            Container.Bind<VkService>().ToSelf().InSingletonScope();
+            Container.Bind<GifService>().ToSelf().InSingletonScope();
+            Container.Bind<BotAPI>().ToSelf().InSingletonScope();
         }
     }
 }
